@@ -98,4 +98,26 @@ module Enumerable
     items
   end
 
+  def my_inject(argument = nil, sym = nil)
+    if block_given?
+      accumulator = argument
+      my_each do |item|
+        accumulator = accumulator.nil? ? item : yield(accumulator, item)
+      end
+      accumulator
+    elsif !argument.nil? && (argument.is_a?(Symbol) || argument.is_a?(String))
+      accumulator = nil
+      my_each do |item|
+        accumulator = accumulator.nil? ? item : accumulator.send(argument, item)
+      end
+      accumulator
+    elsif !sym.nil? && (sym.is_a?(Symbol) || sym.is_a?(String))
+      accumulator = argument
+      my_each do |item|
+        accumulator = accumulator.nil? ? item : accumulator.send(sym, item)
+      end
+      accumulator
+    end
+  end
+
 end
