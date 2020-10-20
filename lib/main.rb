@@ -76,4 +76,26 @@ module Enumerable
 
   end
 
+  def my_count(argument = nil)
+    count = 0
+    if block_given? || !argument.nil?
+      block_given? ? my_each { |item| count += 1 if yield(item) } : my_each { |item| count += 1 if argument == item }
+    else
+      count = self.length
+    end
+    count
+  end
+
+  def my_map(argument = nil)
+    return to_enum(:my_map) unless block_given?
+
+    items = []
+    if argument.nil?
+      my_each { |item| items << (yield(item)) }
+    else
+      my_each { |item| items << (argument.call(item)) }
+    end
+    items
+  end
+
 end
