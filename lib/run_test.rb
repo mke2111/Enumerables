@@ -1,19 +1,14 @@
 require_relative 'main.rb'
 
-
 # [1, 2, 3, 5].my_each { |x| p x }
 # puts
 # [1, 2, 3, 5].each { |x| p x } #compare
 # puts
 
-
-
 # [1, 2, 3, 5].my_each_with_index { |x, y| puts "#{x} at #{y}" }
 # puts
 # [1, 2, 3, 5].each_with_index { |x, y| puts "#{x} at #{y}" }#compare
 # puts
-
-
 
 # p [1, 2, 3, 4].my_select { |x| x % 2 == 0}
 # puts
@@ -31,8 +26,6 @@ require_relative 'main.rb'
 # puts
 # p [:foo, :bar].select { |x| x == :foo }   #=> [:foo]
 # puts
-
-
 
 # p ['alpha', 'apple', 'allen key'].my_all?{ |x| x[0] == 'a' }
 # puts
@@ -58,8 +51,6 @@ require_relative 'main.rb'
 # puts
 # p [].all?                                           #=> true
 # puts
-
-
 
 # p ['lpha', 'apple', 'llen key'].my_any?{ |x| x[0] == 'a' }
 # puts
@@ -90,8 +81,6 @@ require_relative 'main.rb'
 # p [].any?                                           #=> false
 # puts
 
-
-
 # p ['lpha', 'pple', 'llen key'].my_none?{ |x| x[0] == 'a' }
 # puts
 # p ['lpha', 'pple', 'llen key'].none?{ |x| x[0] == 'a' }
@@ -120,8 +109,6 @@ require_relative 'main.rb'
 # p [plans, plans, plans].none?(DeathCab)  # => output false
 # puts
 
-
-
 # arr = [1, 2, 3, 4]
 # p arr.my_count { |i| i%2==0}
 # puts
@@ -140,8 +127,6 @@ require_relative 'main.rb'
 # p [1,2,3,4,4,7,7,7,9].count { |i| i > 1 }
 # puts
 
-
-
 # p [1,2,3,4,4,7,7,7,9].my_map { |i| i*4 }
 # puts
 # p [1,2,3,4,4,7,7,7,9].map { |i| i*4 }
@@ -157,23 +142,21 @@ require_relative 'main.rb'
 # p proc = Proc.new { |i| i*i }
 # puts
 
-
-
 # p [1,2,3,4,4,7,7,7,9].my_inject(0){|running_total, item| running_total + item }
 # puts
 # p [1,2,3,4,4,7,7,7,9].inject(0){|running_total, item| running_total + item }
 # puts
-# p (5..10).my_inject(:+)                             
+# p (5..10).my_inject(:+)
 # puts
-# p (5..10).inject(:+)                             
+# p (5..10).inject(:+)
 # puts
 # p (5..10).my_inject { |sum, n| sum + n }
 # puts
 # p (5..10).inject { |sum, n| sum + n }
 # puts
-# p (5..10).my_inject(1, :*)                       
+# p (5..10).my_inject(1, :*)
 # puts
-# p (5..10).inject(1, :*)                       
+# p (5..10).inject(1, :*)
 # puts
 # p (5..10).my_inject(1) { |product, n| product * n }
 # puts
@@ -193,11 +176,7 @@ require_relative 'main.rb'
 # end
 # longest
 
-
-
 # p multiply_els([2,4,5])
-
-
 
 # my_proc = Proc.new { |i| i*4 }
 # p [1,2,3,4,4,7,7,7,9].my_map { |i| i*4 }

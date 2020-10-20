@@ -1,3 +1,7 @@
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/RedundantSelf
+
 # my_Enumerable
 module Enumerable
   # -------------my_each-----------
@@ -99,9 +103,9 @@ module Enumerable
 
     items = []
     if argument.nil?
-      my_each { |item| items << (yield(item)) }
+      my_each { |item| items << yield(item) }
     else
-      my_each { |item| items << (argument.call(item)) }
+      my_each { |item| items << argument.call(item) }
     end
     items
   end

@@ -21,7 +21,7 @@ The my_enumerable methods used are only meant to replicate the ruby enumearble m
 
 ## Live Code
 
-[Check our code](https://repl.it/join/rfvqvjqp-mke2111)
+[Check my code](https://repl.it/join/rfvqvjqp-mke2111)
 
 ## Getting Started
 
