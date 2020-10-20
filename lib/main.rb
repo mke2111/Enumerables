@@ -53,4 +53,27 @@ module Enumerable
     end
   end
 
+  def my_any?(argument = nil)
+    if block_given?
+      my_each { |item| return true if yield(item) }
+      return false
+    end
+    argument.nil? ? argument.class.to_s : my_any? { |item| item }
+
+    if argument.class.to_s == 'Class'
+      my_each { |item| return true if item.is_a? argument }
+    elsif argument.class.to_s == 'Regexp'
+      my_each { |item| return true if item =~ argument }
+    else
+      my_each { |item| return true if item == argument }
+    end
+    false
+  end
+
+  def my_none?(argument = nil, &block)
+
+    !my_any?(argument, &block)
+
+  end
+
 end
