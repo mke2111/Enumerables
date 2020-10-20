@@ -16,7 +16,7 @@ module Enumerable
       yield(items[count])
       count += 1
     end
-    items
+    self
   end
 
   # ------------my_each_with_index----------
@@ -30,7 +30,7 @@ module Enumerable
       yield(items[count], count)
       count += 1
     end
-    items
+    self
   end
 
   # ------------my_select----------
@@ -40,14 +40,14 @@ module Enumerable
 
     items = []
     my_each { |item| items << item if yield(item) }
-    items
+    self
   end
 
   # ------------my_all?----------
 
   def my_all?(argument = nil)
     if block_given?
-      my_each { |item| return false unless yield(item) }
+      my_each { |item| return false if yield(item) }
       return true
     end
     argument.nil? ? argument.class.to_s : my_all? { |item| item }
@@ -66,7 +66,7 @@ module Enumerable
   def my_any?(argument = nil)
     if block_given?
       my_each { |item| return true if yield(item) }
-      return false
+      # return false
     end
     argument.nil? ? argument.class.to_s : my_any? { |item| item }
 

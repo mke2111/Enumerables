@@ -6,7 +6,6 @@ require_relative 'main.rb'
 # puts
 # p [0,1,2,3,4].my_each
 # puts
-p (1..4).my_each{ |num| num < 8 / 2 }
 
 # [1, 2, 3, 5].my_each_with_index { |x, y| puts "#{x} at #{y}" }
 # puts
@@ -83,6 +82,9 @@ p (1..4).my_each{ |num| num < 8 / 2 }
 # puts
 # p [].any?                                           #=> false
 # puts
+p [nil, false, nil, false].my_any?
+puts
+p [nil, false, nil, false].any?
 
 # p ['lpha', 'pple', 'llen key'].my_none?{ |x| x[0] == 'a' }
 # puts
