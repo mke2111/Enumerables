@@ -7,10 +7,10 @@ module Enumerable
   # -------------my_each-----------
 
   def my_each
-    to_enum(:my_each) unless block_given?
+    return to_enum(:my_each) unless block_given?
 
     count = 0
-    items = to_a
+    items = to_a if self.class == Hash || Range
 
     until count > items.length - 1
       yield(items[count])
@@ -22,9 +22,9 @@ module Enumerable
   # ------------my_each_with_index----------
 
   def my_each_with_index
-    to_enum(:my_each_with_index) unless block_given?
+    return to_enum(:my_each_with_index) unless block_given?
 
-    items = to_a
+    items = to_a if self.class == Hash || Range
     count = 0
     until count > items.length - 1
       yield(items[count], count)
@@ -36,7 +36,7 @@ module Enumerable
   # ------------my_select----------
 
   def my_select
-    to_enum(:my_select) unless block_given?
+    return to_enum(:my_select) unless block_given?
 
     items = []
     my_each { |item| items << item if yield(item) }
@@ -139,6 +139,6 @@ def multiply_els(items)
   items.my_inject { |result, item| result * item }
 end
 
-# rubocop:disable Metrics/CyclomaticComplexity
-# rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Style/RedundantSelf
+# rubocop:enable Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/PerceivedComplexity
+# rubocop:enable Style/RedundantSelf

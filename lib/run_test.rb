@@ -4,6 +4,9 @@ require_relative 'main.rb'
 # puts
 # [1, 2, 3, 5].each { |x| p x } #compare
 # puts
+# p [0,1,2,3,4].my_each
+# puts
+p (1..4).my_each{ |num| num < 8 / 2 }
 
 # [1, 2, 3, 5].my_each_with_index { |x, y| puts "#{x} at #{y}" }
 # puts
