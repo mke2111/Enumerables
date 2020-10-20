@@ -66,7 +66,7 @@ module Enumerable
   def my_any?(argument = nil)
     if block_given?
       my_each { |item| return true if yield(item) }
-      # return false
+      return false
     end
     argument.nil? ? argument.class.to_s : my_any? { |item| item }
 
@@ -74,6 +74,8 @@ module Enumerable
       my_each { |item| return true if item.is_a? argument }
     elsif argument.class.to_s == 'Regexp'
       my_each { |item| return true if item =~ argument }
+    elsif argument.nil?
+      my_each { |item| return true if item }
     else
       my_each { |item| return true if item == argument }
     end
@@ -91,7 +93,7 @@ module Enumerable
     if block_given? || !argument.nil?
       block_given? ? my_each { |item| count += 1 if yield(item) } : my_each { |item| count += 1 if argument == item }
     else
-      count = self.length
+      count = self.size
     end
     count
   end
@@ -113,25 +115,17 @@ module Enumerable
   # ------------my_inject----------
 
   def my_inject(argument = nil, sym = nil)
-    if block_given?
-      accumulator = argument
-      my_each do |item|
-        accumulator = accumulator.nil? ? item : yield(accumulator, item)
-      end
-      accumulator
-    elsif !argument.nil? && (argument.is_a?(Symbol) || argument.is_a?(String))
-      accumulator = nil
-      my_each do |item|
-        accumulator = accumulator.nil? ? item : accumulator.send(argument, item)
-      end
-      accumulator
-    elsif !sym.nil? && (sym.is_a?(Symbol) || sym.is_a?(String))
-      accumulator = argument
-      my_each do |item|
-        accumulator = accumulator.nil? ? item : accumulator.send(sym, item)
-      end
-      accumulator
+    if (argument.is_a?(Symbol) || argument.is_a?(String)) && (!argument.nil? && sym.nil?)
+      sym = argument
+      argument = nil
     end
+
+    if !block_given? && !sym.nil?
+      my_each { |item| argument = argument.nil? ? item : argument.send(sym, item) }
+    else
+      my_each { |item| argument = argument.nil? ? item : yield(argument, item) }
+    end
+    argument
   end
 end
 

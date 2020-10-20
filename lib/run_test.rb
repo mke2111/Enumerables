@@ -82,9 +82,9 @@ require_relative 'main.rb'
 # puts
 # p [].any?                                           #=> false
 # puts
-p [nil, false, nil, false].my_any?
-puts
-p [nil, false, nil, false].any?
+# p [nil, false, nil, false].my_any?
+# puts
+# p [nil, false, nil, false].any?
 
 # p ['lpha', 'pple', 'llen key'].my_none?{ |x| x[0] == 'a' }
 # puts
@@ -113,6 +113,9 @@ p [nil, false, nil, false].any?
 # puts
 # p [plans, plans, plans].none?(DeathCab)  # => output false
 # puts
+# p [nil, false, nil, false].my_none?
+# puts
+# p [nil, false, nil, false].none?
 
 # arr = [1, 2, 3, 4]
 # p arr.my_count { |i| i%2==0}
@@ -131,6 +134,9 @@ p [nil, false, nil, false].any?
 # puts
 # p [1,2,3,4,4,7,7,7,9].count { |i| i > 1 }
 # puts
+# p (1..10).my_count
+# puts
+# p (1..10).count
 
 # p [1,2,3,4,4,7,7,7,9].my_map { |i| i*4 }
 # puts
@@ -180,6 +186,10 @@ p [nil, false, nil, false].any?
 #  memo.length > word.length ? memo : word
 # end
 # longest
+
+# p [nil, false, nil, false].my_inject
+# puts
+# p [nil, false, nil, false].inject
 
 # p multiply_els([2,4,5])
 
