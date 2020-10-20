@@ -29,6 +29,8 @@ module Enumerable
     items
   end
 
+  # ------------my_select----------
+
   def my_select
     to_enum(:my_select) unless block_given?
 
@@ -36,6 +38,8 @@ module Enumerable
     my_each { |item| items << item if yield(item) }
     items
   end
+
+  # ------------my_all?----------
 
   def my_all?(argument = nil)
     if block_given?
@@ -52,6 +56,8 @@ module Enumerable
       my_all? { |item| item == argument }
     end
   end
+
+  # ------------my_any?----------
 
   def my_any?(argument = nil)
     if block_given?
@@ -70,10 +76,10 @@ module Enumerable
     false
   end
 
+  # ------------my_none?----------
+
   def my_none?(argument = nil, &block)
-
     !my_any?(argument, &block)
-
   end
 
   def my_count(argument = nil)
@@ -86,6 +92,8 @@ module Enumerable
     count
   end
 
+  # ------------my_map----------
+
   def my_map(argument = nil)
     return to_enum(:my_map) unless block_given?
 
@@ -97,6 +105,8 @@ module Enumerable
     end
     items
   end
+
+  # ------------my_inject----------
 
   def my_inject(argument = nil, sym = nil)
     if block_given?
@@ -119,5 +129,8 @@ module Enumerable
       accumulator
     end
   end
+end
 
+def multiply_els(items)
+  items.my_inject { |result, item| result * item }
 end
