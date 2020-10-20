@@ -29,4 +29,28 @@ module Enumerable
     items
   end
 
+  def my_select
+    to_enum(:my_select) unless block_given?
+
+    items = []
+    my_each { |item| items << item if yield(item) }
+    items
+  end
+
+  def my_all?(argument = nil)
+    if block_given?
+      my_each { |item| return false unless yield(item) }
+      return true
+    end
+    argument.nil? ? argument.class.to_s : my_all? { |item| item }
+
+    if argument.class.to_s == 'Class'
+      my_all? { |item| item.is_a? argument }
+    elsif argument.class.to_s == 'Regexp'
+      my_all? { |item| item =~ argument }
+    else
+      my_all? { |item| item == argument }
+    end
+  end
+
 end
