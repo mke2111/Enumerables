@@ -39,7 +39,7 @@ module Enumerable
     return to_enum(:my_select) unless block_given?
 
     items = []
-    my_each { |item| items << item if yield(item) }
+    my_each { |item| items << item if yield item }
     self
   end
 
@@ -56,6 +56,8 @@ module Enumerable
       my_all? { |item| item.is_a? argument }
     elsif argument.class.to_s == 'Regexp'
       my_all? { |item| item =~ argument }
+    elsif argument.class.to_s == 'Complex'
+      my_all? { |item| item == argument }
     else
       my_all? { |item| item == argument }
     end

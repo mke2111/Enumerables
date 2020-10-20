@@ -20,10 +20,6 @@ require_relative 'main.rb'
 # puts
 # p (1..10).select { |i|  i % 3 == 0 }   #=> [3, 6, 9]
 # puts
-p [1,2,3,4,5].my_select { |num|  num < 3  }   #=> [2, 4]
-puts
-p [1,2,3,4,5].select { |num|  num < 3 }   #=> [2, 4]
-puts
 # p [:foo, :bar].my_select { |x| x == :foo }   #=> [:foo]
 # puts
 # p [:foo, :bar].select { |x| x == :foo }   #=> [:foo]
