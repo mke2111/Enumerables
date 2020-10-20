@@ -138,3 +138,7 @@ end
 def multiply_els(items)
   items.my_inject { |result, item| result * item }
 end
+
+# rubocop:disable Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/PerceivedComplexity
+# rubocop:disable Style/RedundantSelf
