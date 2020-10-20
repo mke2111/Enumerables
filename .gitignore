@@ -1,1 +1,2 @@
 .rubocop.yml
+./lib/run_test.rb

@@ -40,10 +40,6 @@ Download the code or copy the git repository to your computer.
 
 Run the main.rb file in your terminal.
 
-### Run tests
-
-Rubocop errors
-
 ## Author
 
 - GitHub: [@mke2111](https://github.com/mke2111)
