@@ -57,10 +57,10 @@ module Enumerable
       my_all? { |item| item.is_a? argument }
     elsif argument.class.to_s == 'Regexp'
       my_all? { |item| item =~ argument }
-    elsif argument.class.to_s == 'Complex'
-      my_all? { |item| item == argument }
+    elsif argument.nil?
+      my_each { |item| return true unless item == true }
     else
-      my_all? { |item| item == argument }
+      my_all? { |item| item == argument if item != true }
     end
   end
 

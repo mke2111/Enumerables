@@ -51,6 +51,8 @@ require_relative 'main.rb'
 # puts
 # p [].all?                                           #=> true
 # puts
+# p [1, true, 'hi', []].my_all?
+# p [1, true, 'hi', []].all?
 
 # p ['lpha', 'apple', 'llen key'].my_any?{ |x| x[0] == 'a' }
 # puts
