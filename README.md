@@ -1,6 +1,6 @@
 # My Enumerable Methods - Ruby
 
-The my_enumerable methods used are only meant to replicate the ruby enumearble methods.
+The my_enumerable methods used are only meant to replicate the ruby enumerable methods.
 
 
 ## my_enumerable methods include:

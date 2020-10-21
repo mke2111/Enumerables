@@ -1,6 +1,5 @@
 # rubocop:disable Metrics/CyclomaticComplexity
 # rubocop:disable Metrics/PerceivedComplexity
-# rubocop:disable Style/RedundantSelf
 
 # my_Enumerable
 module Enumerable
@@ -9,8 +8,9 @@ module Enumerable
   def my_each
     return to_enum(:my_each) unless block_given?
 
+    self_item = self
     count = 0
-    items = to_a if self.class == Hash || Range
+    items = to_a if self_item.class == Hash || Range
 
     until count > items.length - 1
       yield(items[count])
@@ -24,7 +24,8 @@ module Enumerable
   def my_each_with_index
     return to_enum(:my_each_with_index) unless block_given?
 
-    items = to_a if self.class == Hash || Range
+    self_item = self
+    items = to_a if self_item.class == Hash || Range
     count = 0
     until count > items.length - 1
       yield(items[count], count)
@@ -36,18 +37,18 @@ module Enumerable
   # ------------my_select----------
 
   def my_select
-    return to_enum(:my_select) unless block_given?
+    return to_enum(:my_each) unless block_given?
 
     items = []
     my_each { |item| items << item if yield item }
-    self
+    items
   end
 
   # ------------my_all?----------
 
   def my_all?(argument = nil)
     if block_given?
-      my_each { |item| return false if yield(item) }
+      my_each { |item| return false unless yield(item) }
       return true
     end
     argument.nil? ? argument.class.to_s : my_all? { |item| item }
@@ -137,4 +138,3 @@ end
 
 # rubocop:enable Metrics/CyclomaticComplexity
 # rubocop:enable Metrics/PerceivedComplexity
-# rubocop:enable Style/RedundantSelf

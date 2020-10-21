@@ -18,13 +18,15 @@ require_relative 'main.rb'
 # puts
 # p (1..10).my_select { |i|  i % 3 == 0 }   #=> [3, 6, 9]
 # puts
-# p (1..10).select { |i|  i % 3 == 0 }   #=> [3, 6, 9]
+# p (1..10).select { |i|  i < 3 }   #=> [3, 6, 9]
 # puts
 # p [:foo, :bar].my_select { |x| x == :foo }   #=> [:foo]
 # puts
 # p [:foo, :bar].select { |x| x == :foo }   #=> [:foo]
 # puts
 
+# p [1, 2].my_all? { |x| x > 0 }
+# p [1, 2].all? { |x| x > 0 }
 # p ['alpha', 'apple', 'allen key'].my_all?{ |x| x[0] == 'a' }
 # puts
 # p ['alpha', 'apple', 'allen key'].all?{ |x| x[0] == 'a' }
