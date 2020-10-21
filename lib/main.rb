@@ -48,20 +48,17 @@ module Enumerable
 
   def my_all?(argument = nil)
     if block_given?
-      my_each { |item| return false unless yield(item) }
-      return true
-    end
-    argument.nil? ? argument.class.to_s : my_all? { |item| item }
-
-    if argument.class.to_s == 'Class'
-      my_all? { |item| item.is_a? argument }
-    elsif argument.class.to_s == 'Regexp'
-      my_all? { |item| item =~ argument }
+      my_each { |item| return false if yield(item) == false }
+      true
     elsif argument.nil?
-      my_each { |item| return false if item == false || item.nil? }
-    else
-      my_all? { |item| item == argument if item != true }
+      my_each { |item| return false if item.nil? || item == false }
+    elsif !argument.nil? && argument.is_a?(Class)
+      my_each { |item| return false unless [item.class, item.class.superclass].include?(argument) }
+    elsif argument.class == Regexp
+      my_each { |item| return false unless argument.match(item) }
+    else my_each { |item| return false if item != argument }
     end
+    true
   end
 
   # ------------my_any?----------
