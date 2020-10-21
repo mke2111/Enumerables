@@ -58,7 +58,7 @@ module Enumerable
     elsif argument.class.to_s == 'Regexp'
       my_all? { |item| item =~ argument }
     elsif argument.nil?
-      my_each { |item| return true unless item == true }
+      my_each { |item| return false if item == false || item.nil? }
     else
       my_all? { |item| item == argument if item != true }
     end
