@@ -96,7 +96,8 @@ module Enumerable
     if block_given? || !argument.nil?
       block_given? ? my_each { |item| count += 1 if yield(item) } : my_each { |item| count += 1 if argument == item }
     else
-      count = self.size
+      object = self
+      count = object.size
     end
     count
   end
